@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'Gotham';
+    src: url('/assets/fonts/Aileron-Light.otf') format('otf');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+	font-family: 'Aileron';
+	src: url('/assets/fonts/Aileron-Regular.otf') format('otf');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Gotham';
+	src: url('/assets/fonts/SemiBold.otf') format('otf');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Gotham';
+	src: url('/assets/fonts/Aileron-Bold.otf') format('otf');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+* {
+	font-family: "Aileron", sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    width: 100vw;
+    background-color: #F9F9F9;
+    height: 100vh;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-form-field-infix {
+	display: flex !important;
+	gap: 1em;
+}
+.mat-form-field-wrapper {
+	padding: 0;
+	margin: 0 !important;
+}

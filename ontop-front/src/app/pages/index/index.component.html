@@ -1,0 +1,125 @@
+<app-header></app-header>
+
+<div class="body">
+
+  <h1>Contracts for <span>{{Client}}</span></h1>
+
+  <div class="top-content">
+    <form [formGroup]="Search">
+      <mat-form-field appearance="outline">
+          <img  src="/assets/images/search_icon.svg" alt="Search">
+          <input matInput type="search" formControlName='search' placeholder="Search">
+      </mat-form-field>
+    </form>
+    <button><img src="/assets/images/filter_icon.svg" alt="Filter">Filter</button>
+    <button><img src="/assets/images/add_icon.svg" alt="Add">New hire</button>
+  </div>
+  <div class="pre-table">
+    <form [formGroup]="Filters">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Created on:</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="created">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Contract type</mat-label>
+        <select matNativeControl required formControlName="contractType">
+          <option value="Cone">Contract 1</option>
+          <option value="Ctwo">Contract 2</option>
+          <option value="Cthree">Contract 3</option>
+          <option value="Cfour">Contract 4</option>
+        </select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Contractor Name</mat-label>
+        <input matInput type="text" placeholder="Search" formControlName="Status">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Status</mat-label>
+        <select matNativeControl required>
+          <option value="Sone">Status 1</option>
+          <option value="Stwo">Status 2</option>
+          <option value="Sthree">Status 3</option>
+          <option value="Sfour">Status 4</option>
+        </select>
+      </mat-form-field>
+
+
+    </form>
+  </div>
+  <mat-table matSort matTableResponsive [dataSource]="dataSource">
+    
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        <span> Contractor name </span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" data-label="Contractor name">
+        <span> <img [src]="element.image" /> <p>{{element.name}}</p> </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef>
+        <span> Type </span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" data-label="Type">
+        <span> {{ element.type }} </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef>
+        <span> Start date </span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" data-label="Start date">
+        <span> {{ element.date }} </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef>
+        <span> Amount </span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" data-label="Amount">
+        <span> {{ element.amount }} </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef>
+        <span> Status </span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" data-label="Status">
+        <span> {{ element.status }} </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <span> Actions </span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" data-label="Actions">
+        <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row
+      *matHeaderRowDef="displayedColumns; sticky: true"
+    ></mat-header-row>
+    <mat-row
+      *matRowDef="let row; columns: displayedColumns; let i = index"
+    >
+    </mat-row>
+  </mat-table>
+
+
+</div>
