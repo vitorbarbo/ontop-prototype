@@ -1,37 +1,57 @@
 <header>
-    <nav>
-        <div class="logo">
-            <img src="/assets/images/logo.svg" alt="Company Logo">
-        </div>
+  <nav>
+    <div class="logo">
+      <img src="/assets/images/logo.svg" alt="Company Logo" />
+    </div>
+    <ul>
+      <li (click)="setActive(1)" [ngClass]="{ active: active === 1 }">
+        <img src="/assets/images/person_icon.svg" alt="" />
+        Contracts
+        <img src="/assets/images/dropdown_icon.svg" alt="DropDown Icon" />
+      </li>
+      <li (click)="setActive(2)" [ngClass]="{ active: active === 2 }">
+        <img src="/assets/images/document_icon.svg" alt="" />
+        Documents
+        <img src="/assets/images/dropdown_icon.svg" alt="DropDown Icon" />
+      </li>
+      <li (click)="setActive(3)" [ngClass]="{ active: active === 3 }">
+        <img src="/assets/images/payment_icon.svg" alt="" />
+        Payout
+        <img src="/assets/images/dropdown_icon.svg" alt="DropDown Icon" />
+      </li>
+      <li (click)="setActive(4)" [ngClass]="{ active: active === 4 }">
+        <img src="/assets/images/calendar_icon.svg" alt="" />
+        Time
+        <img src="/assets/images/dropdown_icon.svg" alt="DropDown Icon" />
+      </li>
+    </ul>
+    <div class="mob-only" [matMenuTriggerFor]="menuMobile">
+      <img src="/assets/images/bar_mob_nav.svg" alt="Open menu" /><img
+        src="/assets/images/bar_mob_nav.svg"
+        alt="Open menu"
+      /><img src="/assets/images/bar_mob_nav.svg" alt="Open menu" />
+      <mat-menu #menuMobile>
         <ul>
-            <li (click)='contractsActive()' [ngClass]="{active: contracts}">
-                <img src="/assets/images/person_icon.svg" alt="">
-                Contracts
-                <img src="/assets/images/dropdown_icon.svg" alt="DropDown Icon">
-            </li>
-            <li (click)='documentsActive()' [ngClass]="{active: documents}">
-                <img src="/assets/images/document_icon.svg" alt="">
-                Documents
-                <img src="/assets/images/dropdown_icon.svg" alt="DropDown Icon">
-            </li>
-            <li (click)='payoutActive()' [ngClass]="{active: payout}">
-                <img src="/assets/images/payment_icon.svg" alt="">
-                Payout
-                <img src="/assets/images/dropdown_icon.svg" alt="DropDown Icon">
-            </li>
-            <li (click)='timeActive()' [ngClass]="{active: time}">
-                <img src="/assets/images/calendar_icon.svg" alt="">
-                Time
-                <img src="/assets/images/dropdown_icon.svg" alt="DropDown Icon">
-            </li>
-            
+          <li (click)="setActive(1)" [ngClass]="{ active: active === 1 }">
+            <img src="/assets/images/person_icon.svg" alt="" />
+            Contracts
+          </li>
+          <li (click)="setActive(2)" [ngClass]="{ active: active === 2 }">
+            <img src="/assets/images/document_icon.svg" alt="" />
+            Documents
+          </li>
+          <li (click)="setActive(3)" [ngClass]="{ active: active === 3 }">
+            <img src="/assets/images/payment_icon.svg" alt="" />
+            Payout
+          </li>
+          <li (click)="setActive(4)" [ngClass]="{ active: active === 4 }">
+            <img src="/assets/images/calendar_icon.svg" alt="" />
+            Time
+          </li>
         </ul>
-        <div class="avatar">
-            <img src="/assets/images/avatar.svg" alt="Avatar">
-            <img src="/assets/images/dropdown_icon.svg" alt="DropDown Icon">
+      </mat-menu>
+    </div>
 
-        </div>
-        
-        
-    </nav>
+    <app-user-avatar></app-user-avatar>
+  </nav>
 </header>

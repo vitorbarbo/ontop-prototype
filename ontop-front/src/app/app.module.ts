@@ -8,12 +8,14 @@ import { HeaderComponent } from './components/header/header.component';
 import { MaterialModule } from './material-module';
 import { IndexComponent } from './pages/index/index.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    IndexComponent
+    IndexComponent,
+    UserAvatarComponent
   ],
   imports: [
     BrowserModule,

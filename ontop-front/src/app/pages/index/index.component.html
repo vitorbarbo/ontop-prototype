@@ -1,25 +1,36 @@
 <app-header></app-header>
 
 <div class="body">
-
-  <h1>Contracts for <span>{{Client}}</span></h1>
+  <h1>
+    Contracts for <span>{{ Client }}</span>
+  </h1>
 
   <div class="top-content">
     <form [formGroup]="Search">
       <mat-form-field appearance="outline">
-          <img  src="/assets/images/search_icon.svg" alt="Search">
-          <input matInput type="search" formControlName='search' placeholder="Search">
+        <img src="/assets/images/search_icon.svg" alt="Search" />
+        <input
+          matInput
+          type="search"
+          formControlName="search"
+          placeholder="Search"
+        />
       </mat-form-field>
     </form>
-    <button><img src="/assets/images/filter_icon.svg" alt="Filter">Filter</button>
-    <button><img src="/assets/images/add_icon.svg" alt="Add">New hire</button>
+    <div>
+      <button>
+        <img src="/assets/images/filter_icon.svg" alt="Filter" />Filter
+      </button>
+      <button>
+        <img src="/assets/images/add_icon.svg" alt="Add" />New hire
+      </button>
+    </div>
   </div>
   <div class="pre-table">
     <form [formGroup]="Filters">
-
       <mat-form-field appearance="outline">
         <mat-label>Created on:</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="created">
+        <input matInput [matDatepicker]="picker" formControlName="created" />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
@@ -35,30 +46,38 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Contractor Name</mat-label>
-        <input matInput type="text" placeholder="Search" formControlName="Status">
+        <input
+          matInput
+          type="text"
+          placeholder="Search"
+          formControlName="contractorName"
+        />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Status</mat-label>
-        <select matNativeControl required>
+        <select matNativeControl required formControlName="Status">
           <option value="Sone">Status 1</option>
           <option value="Stwo">Status 2</option>
           <option value="Sthree">Status 3</option>
           <option value="Sfour">Status 4</option>
         </select>
       </mat-form-field>
-
-
     </form>
+    <button type="reset" class="mob-only">
+      <img src="/assets/images/delete_icon.svg" alt="Delete" />
+      <span>Clear filters</span>
+    </button>
   </div>
   <mat-table matSort matTableResponsive [dataSource]="dataSource">
-    
-
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         <span> Contractor name </span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element" data-label="Contractor name">
-        <span> <img [src]="element.image" /> <p>{{element.name}}</p> </span>
+        <span>
+          <img [src]="element.image" />
+          <p>{{ element.name }}</p>
+        </span>
       </mat-cell>
     </ng-container>
 
@@ -76,7 +95,7 @@
         <span> Start date </span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element" data-label="Start date">
-        <span> {{ element.date }} </span>
+        <span> {{ element.date | date: "MMM d, yyyy" }} </span>
       </mat-cell>
     </ng-container>
 
@@ -85,7 +104,7 @@
         <span> Amount </span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element" data-label="Amount">
-        <span> {{ element.amount }} </span>
+        <span> {{ element.amount | currency }} </span>
       </mat-cell>
     </ng-container>
 
@@ -94,7 +113,14 @@
         <span> Status </span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element" data-label="Status">
-        <span> {{ element.status }} </span>
+        <span
+          [ngClass]="{
+            active: element.status === 'Active',
+            pending: element.status === 'Signature pending'
+          }"
+        >
+          {{ element.status }}
+        </span>
       </mat-cell>
     </ng-container>
 
@@ -103,10 +129,30 @@
         <span> Actions </span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element" data-label="Actions">
-        <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <img src="/assets/images/menu_icon.svg" alt="Menu" />
           <mat-menu #menu="matMenu">
-            <button mat-menu-item>Item 1</button>
-            <button mat-menu-item>Item 2</button>
+            <button class="menu-button" mat-menu-item>
+              <img src="/assets/images/edit_icon.svg" alt="Edit" /><span
+                >Edit</span
+              >
+            </button>
+            <button class="menu-button" mat-menu-item>
+              <img src="/assets/images/sign_icon.svg" alt="Sign" /><span
+                >Sign</span
+              >
+            </button>
+            <button class="menu-button" mat-menu-item>
+              <img src="/assets/images/summary_icon.svg" alt="View" /><span
+                >View</span
+              >
+              summary
+            </button>
+            <button class="menu-button" mat-menu-item>
+              <img src="/assets/images/delete_icon.svg" alt="Delete" /><span
+                >Delete</span
+              >
+            </button>
           </mat-menu>
         </button>
       </mat-cell>
@@ -115,11 +161,11 @@
     <mat-header-row
       *matHeaderRowDef="displayedColumns; sticky: true"
     ></mat-header-row>
-    <mat-row
-      *matRowDef="let row; columns: displayedColumns; let i = index"
-    >
+    <mat-row *matRowDef="let row; columns: displayedColumns; let i = index">
     </mat-row>
   </mat-table>
 
-
+  <div class="chat-button">
+    <img src="/assets/images/chat_icon.svg" alt="Chat" />
+  </div>
 </div>

@@ -1,0 +1,41 @@
+@mixin avatar-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.flex-center {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-left: 1px solid #c4c4c4;
+}
+.mat-menu-settings {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  span {
+    margin-bottom: 0;
+    font-weight: 600;
+  }
+  .orange {
+    color: #e73b22;
+  }
+}
+
+.select-uni {
+  padding: 10px;
+  margin: 0;
+}
+.mat-form-field.no-padding-form {
+  display: flex;
+  margin: 0;
+}
+@media screen and (max-width: 768px) {
+  app-user-avatar {
+    display: none !important;
+  }
+}

@@ -1,0 +1,31 @@
+<div class="flex-center">
+  <div class="user-avatar" matRipple>
+    <img src="/assets/images/avatar.svg" alt="Avatar" />
+  </div>
+  <img
+    src="/assets/images/dropdown_icon.svg"
+    alt="Open menu"
+    [matMenuTriggerFor]="menuUser"
+  />
+  <mat-menu #menuUser xPosition="before" yPosition="below">
+    <button class="mat-menu-settings" mat-menu-item>
+      <img src="/assets/images/edit_icon.svg" alt="Edit" />
+      <span class="orange">Edit profile</span>
+    </button>
+    <div>
+      <button class="mat-menu-settings" mat-menu-item>
+        <img src="/assets/images/help_icon.svg" alt="Infos" />
+        <span>Infos</span>
+      </button>
+    </div>
+    <button mat-menu-item class="mat-menu-settings">
+      <img src="/assets/images/logout_icon.svg" alt="Logout" />
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+  <ng-template #noUserImage>
+    <mat-icon class="user-avatar__generic-icon" [matMenuTriggerFor]="menuUser"
+      >person</mat-icon
+    >
+  </ng-template>
+</div>
